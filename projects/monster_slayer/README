@@ -1,0 +1,52 @@
+Here's a README template for your project:
+
+---
+
+# Monster Slayer Game
+
+## Overview
+
+The "Monster Slayer Game" is a simple text-based RPG that demonstrates the use of classes and object-oriented programming (OOP) principles in game development. The game features a player character battling against a series of monsters, utilizing basic RPG mechanics such as attacking, defending, and using potions. This project serves as an example of how to structure a game using classes and OOP concepts.
+
+## Features
+
+- **Character Class:** Represents both the player and monsters, with attributes for health, attack power, defense power, and potions.
+- **Monster Class:** Inherits from the Character class and represents different types of monsters.
+- **Health Bars:** Displays health status for the player and monsters.
+- **Player Actions:** The player can attack, defend, or use potions.
+- **Turn-Based Combat:** Alternates turns between the player and monsters.
+
+## Game Mechanics
+
+- **Attack:** The player can attack a monster, dealing damage based on their attack power and the monster's defense.
+- **Defend:** The player can increase their defense power.
+- **Use Potion:** The player can use a potion to recover health points.
+- **Monster Turn:** Monsters attack the player on their turn.
+
+## How to Run
+
+1. **Compile the Code:**
+   ```sh
+   g++ -o monster_slayer game.cpp
+   ```
+
+2. **Run the Executable:**
+   ```sh
+   ./monster_slayer
+   ```
+
+## Code Explanation
+
+- **Character Class:** Contains attributes for health, attack power, defense power, and potions. Methods include `attack()`, `defend()`, `usePotion()`, and `isAlive()`.
+- **Monster Class:** Inherits from `Character` and initializes with no potions.
+- **`displayHealthBar()`:** Displays the health status of a character or monster using a visual health bar.
+- **Player and Monster Turns:** Functions to handle player and monster actions, determining the outcome of each turn.
+
+## Example Usage
+
+The game will prompt the player to choose an action during their turn. The available actions are:
+1. Attack
+2. Defend
+3. Use Potion
+
+After the player's turn, the monster will attack if it is still alive. The game continues until either the player defeats all monsters or the player is defeated.
