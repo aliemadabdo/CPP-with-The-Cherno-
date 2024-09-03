@@ -112,6 +112,8 @@ Smart pointers are a part of the C++ Standard Library that provide automatic and
 - **Notes**:
   - `weak_ptr` does not affect the reference count of the managed object.
   - Use `lock()` to obtain a `shared_ptr` and check if the object still exists.
+  - After the object is deleted, all std::weak_ptrs that were observing this object become "expired."
+  - An expired `std::weak_ptr` no longer points to a valid object, and calling `lock()` on it will return a `std::shared_ptr` that is nullptr.
 
 ## Best Practices
 
