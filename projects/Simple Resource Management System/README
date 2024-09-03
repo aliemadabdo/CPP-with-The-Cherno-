@@ -1,0 +1,32 @@
+# C++ Mid Project: Create a Simple Resource Management System
+
+### Objective: 
+
+This task will help you cover various C++ concepts, including the `new` keyword, implicit and explicit conversion, operator overloading, the `this` keyword, object lifetime, and smart pointers.
+
+### Scenario:
+
+You are developing a software module that requires the management of an integer resource. The module must handle the creation, manipulation, and destruction of this resource safely and efficiently. Additionally, the module should support various operations on the resource, such as adding two resources together and comparing them.
+
+To ensure the system is robust and modern, you need to leverage C++ features like dynamic memory allocation, implicit and explicit type conversions, operator overloading, and the use of smart pointers for automatic memory management.
+
+### Requirements:
+
+- [ ]  **Create a `Resource` Class**:
+- [ ]  Implement a class `Resource` that manages a simple integer value.
+- [ ]  Use the `new` keyword to dynamically allocate memory for this integer within the constructor.
+- [ ]  Implement a destructor to clean up the dynamically allocated memory.
+- [ ]  **Use Implicit and Explicit Conversions**:
+- [ ]  Overload a constructor of `Resource` that allows implicit conversion from `int` to `Resource`.
+- [ ]  Add another constructor that takes a `float` and explicitly converts it to an integer.
+- [ ]  **Overload Operators**:
+- [ ]  Overload the `+` operator to allow adding two `Resource` objects.
+- [ ]  Overload the `&lt;&lt;` operator for outputting the `Resource` value to an output stream.
+- [ ]  **Utilize the `this` Keyword**:
+- [ ]  Implement a member function `compare` that compares the current `Resource` object (`this`) with another `Resource` object and returns `true` if they are equal.
+- [ ]  **Demonstrate Object Lifetime**:
+- [ ]  Create a function that allocates a `Resource` object on the stack, demonstrating its automatic destruction when going out of scope.
+- [ ]  Contrast this with dynamically allocating a `Resource` object on the heap and managing its lifetime manually.
+- [ ]  **Implement Smart Pointers**:
+- [ ]  Replace the raw pointer management with `std::unique_ptr` in the `Resource` class.
+- [ ]  Create a function that demonstrates the use of `std::shared_ptr` and `std::weak_ptr` for shared ownership scenarios.
