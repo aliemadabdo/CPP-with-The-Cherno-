@@ -15,16 +15,18 @@ struct TreeNode {
 class Solution {
 public:
 
-    int getNodePaths(TreeNode* root, int targetSum){
+    int getNodePaths(TreeNode* root, long long targetSum){
         if(!root) return 0;
 
         int nodePaths = 0;
 
         targetSum -= root->val;
-        if(targetSum == 0) return 1;
 
         nodePaths += getNodePaths(root->left, targetSum);
         nodePaths += getNodePaths(root->right, targetSum);
+
+        // Check if the current path's sum equals the target sum
+        if(targetSum == 0) nodePaths++;
 
         return nodePaths; 
     }
