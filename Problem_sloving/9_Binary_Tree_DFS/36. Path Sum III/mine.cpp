@@ -1,7 +1,7 @@
 #include <iostream>
+#include <stack>
 
 using namespace std;
-
 
 struct TreeNode {
      int val;
@@ -14,8 +14,39 @@ struct TreeNode {
 
 class Solution {
 public:
+
+    int getNodePaths(TreeNode* root, int targetSum){
+        if(!root) return 0;
+
+        int nodePaths = 0;
+
+        targetSum -= root->val;
+        if(targetSum == 0) return 1;
+
+        nodePaths += getNodePaths(root->left, targetSum);
+        nodePaths += getNodePaths(root->right, targetSum);
+
+        return nodePaths; 
+    }
+
     int pathSum(TreeNode* root, int targetSum) {
-        
+        if(!root) return 0;
+
+        int paths = 0;
+        stack<TreeNode*> tree;
+
+        tree.push(root);
+        while(!tree.empty()){ // DFS LOOP to search for each node
+            TreeNode* subRoot = tree.top();
+            tree.pop();
+
+            paths += getNodePaths(subRoot, targetSum); // DFS Recursion to get number of paths which meats the target sum from this node
+
+            if(subRoot->right) tree.push(subRoot->right);    
+            if(subRoot->left) tree.push(subRoot->left);    
+        }
+
+        return paths;
     }
 };
 
