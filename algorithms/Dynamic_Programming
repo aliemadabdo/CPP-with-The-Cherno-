@@ -1,0 +1,119 @@
+Dynamic Programming (DP) is a method used in computer science and mathematics to solve complex problems by breaking them down into simpler subproblems, storing the results of subproblems to avoid redundant calculations. It's particularly useful for optimization problems, where the goal is to find the best solution among many possible ones.
+
+### Key Concepts of Dynamic Programming
+
+1. **Optimal Substructure**: 
+   A problem exhibits optimal substructure if its optimal solution can be constructed from optimal solutions of its subproblems. In other words, the solution to the problem can be broken down into smaller, manageable problems, and the solution to the main problem depends on the solutions to these subproblems.
+   
+2. **Overlapping Subproblems**:
+   This means that the problem can be broken into subproblems that are reused multiple times. Instead of solving the same subproblem repeatedly, DP solves it once and stores the result for future use.
+
+3. **Memoization (Top-Down Approach)**:
+   In this approach, DP solves the problem recursively by breaking it down into subproblems. It stores the results of subproblems in a table (usually an array or hash map) to reuse them in subsequent computations. This avoids recalculating the same results multiple times.
+
+4. **Tabulation (Bottom-Up Approach)**:
+   Here, the problem is solved by filling up a table in a bottom-up manner. It avoids recursion and solves all smaller subproblems first, then builds up to solve the main problem. This approach is generally preferred when memory management and avoiding recursion stack overflow are important.
+
+### Steps for Applying Dynamic Programming
+
+1. **Identify the subproblems**: Break down the main problem into smaller subproblems that are easier to solve.
+2. **Define the DP table (or memoization structure)**: Decide on the structure (array, hash map, etc.) to store the solutions to the subproblems.
+3. **State transition relation**: Establish the relation between the subproblems and the main problem (how to build the solution of a problem from its subproblems).
+4. **Base case(s)**: Identify the simplest version of the problem (typically when the input size is minimal) that can be solved directly.
+5. **Solve the problem**: Use either memoization (top-down) or tabulation (bottom-up) to solve the problem.
+
+### When to Use Dynamic Programming
+
+Dynamic Programming is ideal for problems with:
+- **Optimal substructure**: Where the solution can be composed of solutions to subproblems.
+- **Overlapping subproblems**: Where the same subproblems are solved multiple times.
+
+Common DP problems include:
+- Fibonacci sequence
+- Longest Common Subsequence
+- Knapsack problem
+- Coin change problem
+- Matrix chain multiplication
+- Shortest path problems (e.g., Bellman-Ford algorithm)
+
+### Example: Fibonacci Sequence
+
+The Fibonacci sequence can be defined as:
+\[ F(n) = F(n-1) + F(n-2) \]
+with base cases:
+\[ F(0) = 0 \]
+\[ F(1) = 1 \]
+
+#### Memoization (Top-Down):
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int fib(int n, vector<int>& memo) {
+    if (n <= 1) return n;
+    if (memo[n] != -1) return memo[n];  // Return cached result
+    memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
+    return memo[n];
+}
+
+int main() {
+    int n = 10;
+    vector<int> memo(n + 1, -1);  // Initialize memoization table
+    cout << "Fibonacci of " << n << " is " << fib(n, memo) << endl;
+    return 0;
+}
+```
+
+#### Tabulation (Bottom-Up):
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int fib(int n) {
+    vector<int> dp(n + 1);
+    dp[0] = 0;
+    dp[1] = 1;
+    for (int i = 2; i <= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    return dp[n];
+}
+
+int main() {
+    int n = 10;
+    cout << "Fibonacci of " << n << " is " << fib(n) << endl;
+    return 0;
+}
+```
+
+### Types of Problems Solved Using DP
+
+1. **0/1 Knapsack Problem**:
+   - You have a set of items, each with a weight and a value, and a knapsack with a maximum weight capacity. You must determine the maximum value you can achieve without exceeding the capacity.
+   
+2. **Longest Common Subsequence**:
+   - Given two strings, find the longest subsequence that is common to both strings. A subsequence is a sequence derived by deleting some or none of the characters from the original strings.
+
+3. **Coin Change Problem**:
+   - Given an amount and a set of coin denominations, find the minimum number of coins needed to make the amount.
+
+### Time and Space Complexity
+- **Time Complexity**: For a DP problem with \(n\) subproblems, if each subproblem takes constant time to solve, the time complexity is \(O(n)\). However, depending on the number of states and transitions, it can vary.
+- **Space Complexity**: DP algorithms typically use an additional table (array or hash map) to store intermediate results, so the space complexity depends on the size of the DP table.
+
+### DP Optimization Techniques
+
+1. **Space Optimization**: In some cases, not all entries in the DP table are needed at once, allowing for optimization by using fewer variables instead of an entire table. For example, in Fibonacci, you only need the last two values to calculate the next one.
+   
+2. **Bitmask DP**: Used in problems involving sets, where subsets can be represented as bitmasks for efficiency (e.g., Traveling Salesman Problem).
+
+3. **Memoization with Recursion**: Combining the top-down approach with caching to solve problems recursively while avoiding repeated computations.
+
+Dynamic programming is a powerful tool for solving many problems that involve making decisions in stages. The key is to recognize the substructure of the problem and manage overlapping subproblems efficiently.
+
+### Refrences:
+1- [Dynamic Programming geeksforgeeks](https://www.geeksforgeeks.org/dynamic-programming/)
