@@ -2,6 +2,8 @@
 // Cause:  The vectorizedTree grows exponentially with the depth of the tree
 //         due to the 2^level calculations, which can lead to excessive memory usage. 
 
+// The other solution is more optimized and solid
+
 #include <iostream>
 #include <vector>
 #include <math.h>
