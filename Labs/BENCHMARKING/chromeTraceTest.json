@@ -1,0 +1,60 @@
+{
+    "traceEvents": [
+      {
+        "pid": 1,
+        "tid": 1,
+        "ts": 1000,
+        "ph": "B",
+        "name": "FunctionA",
+        "cat": "function",
+        "args": { "details": "Entering FunctionA" }
+      },
+      {
+        "pid": 1,
+        "tid": 1,
+        "ts": 2000,
+        "ph": "E",
+        "name": "FunctionA",
+        "cat": "function",
+        "args": { "details": "Exiting FunctionA" }
+      },
+      {
+        "pid": 1,
+        "tid": 2,
+        "ts": 1500,
+        "ph": "B",
+        "name": "FunctionB",
+        "cat": "function",
+        "args": { "details": "Entering FunctionB" }
+      },
+      {
+        "pid": 1,
+        "tid": 2,
+        "ts": 3000,
+        "ph": "E",
+        "name": "FunctionB",
+        "cat": "function",
+        "args": { "details": "Exiting FunctionB" }
+      },
+      {
+        "pid": 1,
+        "tid": 1,
+        "ts": 4000,
+        "ph": "B",
+        "name": "MainLoop",
+        "cat": "process",
+        "args": { "details": "Start Main Loop" }
+      },
+      {
+        "pid": 1,
+        "tid": 1,
+        "ts": 8000,
+        "ph": "E",
+        "name": "MainLoop",
+        "cat": "process",
+        "args": { "details": "End Main Loop" }
+      }
+    ],
+    "displayTimeUnit": "ns"
+  }
+  
