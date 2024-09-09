@@ -12,7 +12,7 @@ If the node is found, delete the node.
 
 Example 1:
 ![Delete Node in a BST](image.png)
-
+![another valid answer](image-1.png)
 Input: root = [5,3,6,2,4,null,7], key = 3
 Output: [5,4,6,2,null,null,7]
 Explanation: Given key to delete is 3. So we find the node with value 3 and delete it.
