@@ -6,6 +6,7 @@
 - [Iteration](#iteration)
 - [Capacity Management](#capacity-management)
 - [Element Insertion](#element-insertion)
+- [Element Deletion](#element-deletion)
 - [Swapping and Assigning](#swapping-and-assigning)
 - [Accessing Data](#accessing-data)
 - [Comparison](#comparison)
@@ -95,6 +96,95 @@ vec1.reserve(20);  // Pre-allocate memory for at least 20 elements
 vec1.shrink_to_fit();  // Reduce capacity to size
 ```
 
+## Element Deletion
+
+### 1. `erase()`
+- **Purpose**: `erase` is used to remove specific elements from a vector.
+- **Syntax**:
+  - To remove a single element:
+    ```cpp
+    vector_name.erase(iterator);
+    ```
+  - To remove a range of elements:
+    ```cpp
+    vector_name.erase(start_iterator, end_iterator);
+    ```
+
+- **Example**: Remove the second element (index 1) from a vector.
+  ```cpp
+  #include <iostream>
+  #include <vector>
+
+  using namespace std;
+
+  int main() {
+      vector<int> vec = {1, 2, 3, 4, 5};
+
+      // Remove element at index 1 (value = 2)
+      vec.erase(vec.begin() + 1);
+
+      for (int val : vec) {
+          cout << val << " ";  // Output: 1 3 4 5
+      }
+      return 0;
+  }
+  ```
+
+- **Example**: Remove a range of elements (from the 2nd to the 4th element).
+  ```cpp
+  #include <iostream>
+  #include <vector>
+
+  using namespace std;
+
+  int main() {
+      vector<int> vec = {1, 2, 3, 4, 5};
+
+      // Remove elements from index 1 to index 3 (2, 3, and 4)
+      vec.erase(vec.begin() + 1, vec.begin() + 4);
+
+      for (int val : vec) {
+          cout << val << " ";  // Output: 1 5
+      }
+      return 0;
+  }
+  ```
+
+### 2. `clear()`
+- **Purpose**: `clear` removes **all** elements from the vector, leaving it empty.
+- **Syntax**:
+  ```cpp
+  vector_name.clear();
+  ```
+
+- **Example**: Clear all elements from a vector.
+  ```cpp
+  #include <iostream>
+  #include <vector>
+
+  using namespace std;
+
+  int main() {
+      vector<int> vec = {1, 2, 3, 4, 5};
+
+      // Clear the vector
+      vec.clear();
+
+      cout << "Size after clear: " << vec.size() << endl;  // Output: 0
+
+      return 0;
+  }
+  ```
+
+### Key Differences:
+- **`erase`**: Removes a specific element or range of elements but leaves the rest of the vector intact. The size of the vector is reduced.
+- **`clear`**: Empties the entire vector, removing all elements.
+
+### Notes:
+- `erase` has **linear complexity**, as it may need to shift elements after removing.
+- `clear` has **constant complexity** because it simply resets the internal data structure of the vector.
+
+
 ## Element Insertion
 ```cpp
 // Insert single element
@@ -134,7 +224,10 @@ int last = vec1.back();    // Last element
 if (vec1 == vec2) { /* Vectors are equal */ }
 if (vec1 != vec2) { /* Vectors are not equal */ }
 if (vec1 < vec2) { /* vec1 is lexicographically less than vec2 */ }
+
 ```
+- Best case: O(1) — if the vectors differ in the very first element.
+- Worst case: O(n) — if the vectors are of the same size and identical, where n is the size of the vectors.
 
 ## Advanced Operations
 ```cpp
