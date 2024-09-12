@@ -95,6 +95,8 @@ vec1.reserve(20);  // Pre-allocate memory for at least 20 elements
 // Shrink capacity to fit size
 vec1.shrink_to_fit();  // Reduce capacity to size
 ```
+**NOTE** : When you call `sizeof(connections)`, it returns the size of the vector object itself (not the size of the data inside it). On a 64-bit system, a `std::vector` typically holds three pointers internally (for its start, end, and capacity), which are usually 8 or 4 bytes each. So, 8 or 4 * 3 = 24 or 12 bytes. However, depending on the system and compiler optimizations, you may get a smaller or different result.
+
 
 ## Element Deletion
 
