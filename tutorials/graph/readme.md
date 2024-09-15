@@ -387,13 +387,12 @@
                 int v = edge[2];
                 if (find(u) != find(v))
 
- {
+                {
                     unionSet(u, v);
                     std::cout << u << " -- " << v << " == " << weight << std::endl;
                 }
             }
         }
-
     private:
         int V;
         std::vector<std::vector<int>> edges;
