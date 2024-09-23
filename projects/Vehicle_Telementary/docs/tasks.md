@@ -1,8 +1,10 @@
 # TODO
 ## Display the sensor values on the terminal [DONE]
 - Multi-threading [POSTPONDED]
-## Deal with various conditions [IN-PROGRESS]
-## Log the data via composition or dependancy injection
+## Deal with various conditions (diagnostics) [DONE]
+## Log the data via composition or dependancy injection [IN-PROGRESS]
+- Singletone [Design pattern]
+## Documentation and english video recording
 ## CMake
 
 # DONE

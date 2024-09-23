@@ -40,13 +40,6 @@ int main(){
         tempSensor.setRandomValue();
         battery.setRandomValue(); // for temp and level
 
-        /*GET SENSORS VALUES*/
-        speed = speedSensor.getValue();
-        distance = radarSensor.getValue();
-        engineTemp = tempSensor.getValue();
-        batteryLevel = battery.getLevel();
-        batteryTemp = battery.getTemp();
-        
         /*SHOW ON DASHBOARD*/
         speedSensor.printValue();
         radarSensor.printValue();
@@ -54,6 +47,14 @@ int main(){
         battery.printValue();
         cout << endl;
 
+        /* Diagnostics */
+        /*GET SENSORS VALUES*/
+        speed = speedSensor.getValue();
+        distance = radarSensor.getValue();
+        engineTemp = tempSensor.getValue();
+        batteryLevel = battery.getLevel();
+        batteryTemp = battery.getTemp();
+        
         if (speed > 0.8*maxSpeed || speed < -0.8*minSpeed) 
             breaks(speedSensor); // apply breaks till be under threshold
         if (distance < 0.2*maxDistance) 
