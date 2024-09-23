@@ -9,6 +9,9 @@ class SpeedSensor : public Sensor {
 private:
 
 public:
+    SpeedSensor(int start, int end);
+    SpeedSensor();
+    // void setRandomValue(int start, int end); // optional to change
     void printValue() const override;  // Override the pure virtual function from Sensor
     // the override key word is optional here
 };
