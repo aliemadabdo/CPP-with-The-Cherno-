@@ -1,4 +1,5 @@
 #include "speed.hpp"
+#include <thread>
 
 void sys_init(void){
     SpeedSensor ss; 
@@ -8,5 +9,6 @@ void sys_init(void){
 
 int main(){
     sys_init();
-
+    // we need to create n threads, where n = the # sensors
+    
 }
