@@ -17,8 +17,14 @@ constexpr int minBatteryTemp = -40; // -40°C
 constexpr int maxBatteryTemp = 55; // 55°C 
 constexpr int maxBatteryLevel = 90; // 90% 
 
+// Define thresholds for alerts
+constexpr float speedAlertThreshold = 0.8f;
+constexpr float engineTempAlertThreshold = 0.9f;
+constexpr float batteryTempAlertThreshold = 0.9f;
+constexpr int lowBatteryLevel = 20; // 20%
+
 int main(){
-    int speed, distance, engintemp, batteryLevel, batteryTemp;
+    int speed, distance, engineTemp, batteryLevel, batteryTemp;
 
     SpeedSensor speedSensor(minSpeed, maxSpeed);
     RadarSensor radarSensor(0, maxDistance);
@@ -37,7 +43,7 @@ int main(){
         /*GET SENSORS VALUES*/
         speed = speedSensor.getValue();
         distance = radarSensor.getValue();
-        engintemp = tempSensor.getValue();
+        engineTemp = tempSensor.getValue();
         batteryLevel = battery.getLevel();
         batteryTemp = battery.getTemp();
         
@@ -48,11 +54,18 @@ int main(){
         battery.printValue();
         cout << endl;
 
-        if (speed > 0.8*maxSpeed || speed < -0.8*minSpeed) /* apply breaks and set the speed to 80*/;
-        if (distance < 0.2*maxDistance) /* apply breaks tell the distance be safe out of range */;
-        if (engintemp > 0.9*maxEngineTemp || engintemp < 1.1*minEngineTemp) /* Put some alerts and some breaks */;
-        if (batteryTemp > 0.9*maxBatteryTemp || batteryTemp < 0.9*minBatteryTemp) /* Put some alerts */;
-        if (batteryLevel < 20) /* Put some alerts */;
+        if (speed > 0.8*maxSpeed || speed < -0.8*minSpeed) 
+            breaks(speedSensor); // apply breaks till be under threshold
+        if (distance < 0.2*maxDistance) 
+            breaks(speedSensor); // No actual relation between the speed and the distance here so we apply the same logic
+            // TODO: add relation between speed and distance
+        if (engineTemp > 0.9*maxEngineTemp || engineTemp < 1.1*minEngineTemp) 
+            breaks(speedSensor); // No actual relation between the speed and the engine temprature here so we apply the same logic
+            // TODO: add relation between speed and engine temprature
+        if (batteryTemp > 0.9*maxBatteryTemp || batteryTemp < 0.9*minBatteryTemp) 
+            cout << "\n[ALERT] Battery temperature is critical! Initiating cooling...\n" << endl;
+        if (batteryLevel < 20) 
+            cout << "\n[ALERT] Low battery level! Please recharge...\n" << endl;
 
     }    
 }

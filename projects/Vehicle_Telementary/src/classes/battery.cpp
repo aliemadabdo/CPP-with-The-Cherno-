@@ -7,7 +7,9 @@ BatterySensor::BatterySensor(){} // as the drived class constructs the base clas
                 // we will need a default constructor for the drived and base classes
 
 void BatterySensor::setRandomValue(){
-    value = lowerBound + std::rand() % (upperBound - lowerBound + 1); // battery level
+    // inherited attribute
+    setValue(getLowerBound() + std::rand() % (getUpperBound() - getLowerBound() + 1)); // battery level
+    // attribure owned by this class
     temprature = tempLowerBound + std::rand() % (tempUpperBound - tempLowerBound + 1);
 } 
 
@@ -24,5 +26,5 @@ int BatterySensor::getLevel() const{
 void BatterySensor::printValue() const  {
     // std::cout << std::endl;
     // std::cout ;
-    std::cout << "Battery temp: " << getTemp() << "%\t" << "level: " << getLevel() << "%\t";
+    std::cout << "Battery temp: " << getTemp() << "`C\t" << "level: " << getLevel() << "%\t";
 }
