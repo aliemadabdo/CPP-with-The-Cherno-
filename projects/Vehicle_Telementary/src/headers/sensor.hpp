@@ -2,7 +2,7 @@
 #define SENSOR_H
 
 class Sensor{ // Abstract class
-private:
+protected:
     int value;
     int lowerBound = 0, upperBound = 100;
 

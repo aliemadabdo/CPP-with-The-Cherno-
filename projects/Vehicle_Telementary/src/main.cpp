@@ -15,13 +15,16 @@ constexpr int minEngineTemp = 195; // 220°C is the upper recommended engine tem
 constexpr int maxEngineTemp = 220; // 195°C is the lower recommended engine temprature
 constexpr int minBatteryTemp = -40; // -40°C 
 constexpr int maxBatteryTemp = 55; // 55°C 
+constexpr int maxBatteryLevel = 90; // 90% 
 
 int main(){
     int speed, distance, engintemp, batteryLevel, batteryTemp;
 
     SpeedSensor speedSensor(minSpeed, maxSpeed);
-    RadarSensor radarSensor;
-    TempratureSensor tempSensor;
+    RadarSensor radarSensor(0, maxDistance);
+    TempratureSensor tempSensor(minEngineTemp, maxEngineTemp);
+    BatterySensor battery(minBatteryTemp, maxBatteryTemp, maxBatteryLevel);
+
 
 
     while(true){
@@ -29,16 +32,20 @@ int main(){
         speedSensor.setRandomValue();
         radarSensor.setRandomValue();
         tempSensor.setRandomValue();
+        battery.setRandomValue(); // for temp and level
 
         /*GET SENSORS VALUES*/
         speed = speedSensor.getValue();
         distance = radarSensor.getValue();
         engintemp = tempSensor.getValue();
+        batteryLevel = battery.getLevel();
+        batteryTemp = battery.getTemp();
         
         /*SHOW ON DASHBOARD*/
         speedSensor.printValue();
         radarSensor.printValue();
         tempSensor.printValue();
+        battery.printValue();
         cout << endl;
 
         if (speed > 0.8*maxSpeed || speed < -0.8*minSpeed) /* apply breaks and set the speed to 80*/;

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "headers/radar.hpp"
+#include "../headers/radar.hpp"
 
 
 RadarSensor::RadarSensor(int start, int end) : Sensor(start, end) {}

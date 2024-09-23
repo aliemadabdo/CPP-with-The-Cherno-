@@ -1,7 +1,7 @@
 # TODO
-## Display the sensor values on the terminal
-- Multi-threading
-## Deal with various conditions 
+## Display the sensor values on the terminal [DONE]
+- Multi-threading [POSTPONDED]
+## Deal with various conditions [IN-PROGRESS]
 ## Log the data
 ## CMake
 

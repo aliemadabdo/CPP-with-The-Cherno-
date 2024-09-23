@@ -1,6 +1,6 @@
 #include <cstdlib>  // For rand() and srand()
 
-#include "headers/sensor.hpp"
+#include "../headers/sensor.hpp"
 
 Sensor::Sensor(int start, int end) : lowerBound(start), upperBound(end){}
 

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "headers/speed.hpp"
+#include "../headers/speed.hpp"
 
 
 SpeedSensor::SpeedSensor(int start, int end) : Sensor(start, end) {}
