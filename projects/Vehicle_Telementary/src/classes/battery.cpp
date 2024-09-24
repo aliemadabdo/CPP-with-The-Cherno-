@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include "../headers/battery.hpp"
 
@@ -9,8 +11,10 @@ BatterySensor::BatterySensor(){} // as the drived class constructs the base clas
 void BatterySensor::setRandomValue(){
     // inherited attribute
     setValue(getLowerBound() + std::rand() % (getUpperBound() - getLowerBound() + 1)); // battery level
+    // log.data(getValue());
     // attribure owned by this class
-    temprature = tempLowerBound + std::rand() % (tempUpperBound - tempLowerBound + 1);
+    // log.data()
+        temprature = tempLowerBound + std::rand() % (tempUpperBound - tempLowerBound + 1);
 } 
 
 int BatterySensor::getTemp() const{
@@ -26,5 +30,6 @@ int BatterySensor::getLevel() const{
 void BatterySensor::printValue() const  {
     // std::cout << std::endl;
     // std::cout ;
+    
     std::cout << "Battery temp: " << getTemp() << "`C\t" << "level: " << getLevel() << "%\t";
 }

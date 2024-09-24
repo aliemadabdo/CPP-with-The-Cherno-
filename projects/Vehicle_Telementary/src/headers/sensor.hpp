@@ -1,15 +1,22 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
+#include "logger.hpp"
+
 class Sensor{ // Abstract class
 private:
     int value;
     int lowerBound = 0, upperBound = 100;
 
-    // Logger log;
     // Diagnostics diagnos;
     
 protected:
+    // Logger log(logLevel data_2); // this breaks the second rule of SOLID principles ?
+
+    /*Dependency Injection*/ 
+    // Logger* log; // Logger should be passed through the constructor to follow SOLID principles
+
+
     void setValue(int val);
     int getUpperBound();
     int getLowerBound();

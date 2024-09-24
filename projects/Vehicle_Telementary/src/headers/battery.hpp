@@ -1,5 +1,5 @@
-#ifndef BATTERY_SENSOR_H
-#define BATTERY_SENSOR_H
+#ifndef BATTERY_H
+#define BATTERY_H
 
 #include "sensor.hpp"
 

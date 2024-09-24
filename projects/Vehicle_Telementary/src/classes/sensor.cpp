@@ -9,11 +9,13 @@ int Sensor::getValue() const {
 }
 
 void Sensor::setRandomValue() {
-    value = lowerBound + std::rand() % (upperBound - lowerBound + 1);
+    // log.data( 
+        value = lowerBound + std::rand() % (upperBound - lowerBound + 1);
 }
 
 void Sensor::setValue(int val) {
-    value = val;
+    // log.data(
+        value = val;
 }
 
 int Sensor::getUpperBound(){

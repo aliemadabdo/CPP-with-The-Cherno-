@@ -3,6 +3,7 @@
 #include "headers/radar.hpp"
 #include "headers/temprature.hpp"
 #include "headers/battery.hpp"
+#include "headers/logger.hpp"
 
 #include <iostream>
 
@@ -30,8 +31,7 @@ int main(){
     RadarSensor radarSensor(0, maxDistance);
     TempratureSensor tempSensor(minEngineTemp, maxEngineTemp);
     BatterySensor battery(minBatteryTemp, maxBatteryTemp, maxBatteryLevel);
-
-
+    Logger log(data_2);
 
     while(true){
         /*SIMULATE SENSORS*/
@@ -64,9 +64,9 @@ int main(){
             breaks(speedSensor); // No actual relation between the speed and the engine temprature here so we apply the same logic
             // TODO: add relation between speed and engine temprature
         if (batteryTemp > 0.9*maxBatteryTemp || batteryTemp < 0.9*minBatteryTemp) 
-            cout << "\n[ALERT] Battery temperature is critical! Initiating cooling...\n" << endl;
+            log.alert("Battery temperature is critical! Initiating cooling...\n");
         if (batteryLevel < 20) 
-            cout << "\n[ALERT] Low battery level! Please recharge...\n" << endl;
+            log.alert("Low battery level! Please recharge...\n");
 
     }    
 }
