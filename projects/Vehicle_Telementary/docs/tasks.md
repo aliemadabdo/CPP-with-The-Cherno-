@@ -3,7 +3,7 @@
 - Multi-threading [POSTPONDED]
 ## Deal with various conditions (diagnostics) [DONE]
 ## Log the data via composition or dependancy injection [IN-PROGRESS]
-- Singletone [Design pattern]
+- Singletone [Design pattern] [DONE] but we found that we don't need it here
 ## Documentation and english video recording
 ## CMake
 
