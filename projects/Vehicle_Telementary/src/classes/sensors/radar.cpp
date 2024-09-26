@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../../headers/radar.hpp"
+#include "../../headers/logger.hpp"
 
 constexpr int maxDistance = 300; // 300 meter
 constexpr int minDistance = 0; // 300 meter

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../../headers/speed.hpp"
+#include "../../headers/logger.hpp"
 
 /*Sensor Range*/
 constexpr int backSpeed = -50; // 50 km/h backward

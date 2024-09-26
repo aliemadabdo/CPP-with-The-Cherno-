@@ -13,15 +13,19 @@ std::string time_ms() {
     // Get the current time point from the high-resolution clock
     auto currentTimePoint = std::chrono::system_clock::now();
     
-    // Convert to time_t for formatting
+    // Convert to time_t for formatting the date and time
     std::time_t currentTime = std::chrono::system_clock::to_time_t(currentTimePoint);
-
+    
     // Create a struct to hold the formatted time
     std::tm* localTime = std::localtime(&currentTime);
 
-    // Use a string stream to format the time as YYYY-MM-DD HH:MM:SS
+    // Calculate the number of milliseconds by subtracting seconds part
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(currentTimePoint.time_since_epoch()) % 1000;
+
+    // Use a string stream to format the time as YYYY-MM-DD HH:MM:SS.mmm
     std::ostringstream timeStream;
     timeStream << std::put_time(localTime, "%Y-%m-%d %H:%M:%S");
+    timeStream << '.' << std::setfill('0') << std::setw(3) << ms.count();  // Add milliseconds
 
     return timeStream.str();
 }
@@ -57,12 +61,16 @@ void Logger::closeAll(){
 
 Logger::Logger(): level(debug_4){
     clean("all");
+    // std::cout << "all cleaned.\n";
     closeAll();
+    // std::cout << "all closed.\n";
 
     alertsFile.open("logs/alerts.txt", std::ios::app);
     analysisFile.open("logs/analysis.txt", std::ios::app);
     infoFile.open("logs/info.txt", std::ios::app);
     debugFile.open("logs/debug.txt", std::ios::app);
+
+    // std::cout << "all opened.\n";
 
 }
 

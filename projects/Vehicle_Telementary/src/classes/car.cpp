@@ -1,4 +1,5 @@
 #include "../headers/car.hpp"
+#include "../headers/logger.hpp"
 
 Car::Car(SpeedSensor& speedSensor, RadarSensor& radarSensor, TempratureSensor& tempSensor,
  BatteryLevelSensor& batteryLvl, BatteryTempSensor& batteryTemp){
@@ -30,13 +31,13 @@ void Car::showData(){
 
 void Car::diagnostics(){
     if (tempSensor->isAlert()) 
-        std::cout << "Engine temperature is critical! Initiating cooling...\n";
+        Logger::getInstance()->alert("Engine temperature is critical! Initiating cooling...\n",0000);
         // breaks(*speedSensor); // No actual relation between the speed and the engine temprature here so we apply the same logic
         // TODO: add relation between speed and engine temprature
     if (batteryTemp->isAlert()) 
-        std::cout << "Battery temperature is critical! Initiating cooling...\n";
+        Logger::getInstance()->alert("Battery temperature is critical! Initiating cooling...\n",0000);
     if (batteryLvl->isAlert()) 
-        std::cout << "Low battery level! Please recharge...\n";
+        Logger::getInstance()->alert("Low battery level! Please recharge...\n",0000);
 
 }
 

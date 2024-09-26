@@ -1,6 +1,7 @@
 #include <cstdlib>  // For rand() and srand()
 
 #include "../headers/sensor.hpp"
+#include "../headers/logger.hpp"
 
 Sensor::Sensor(int start, int end, float upperAlert, float lowerAlert) 
 : lowerBound(start), upperBound(end), upperAlertThreshold(upperAlert), lowerAlertThreshold(lowerAlert){

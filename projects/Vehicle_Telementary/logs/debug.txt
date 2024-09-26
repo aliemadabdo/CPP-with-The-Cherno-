@@ -1,0 +1,6 @@
+2024-09-26 15:57:02.342	[DEBUG]:	speed class size: 32
+2024-09-26 15:57:02.342	[DEBUG]:	radar class size: 32
+2024-09-26 15:57:02.343	[DEBUG]:	engine temprature class size: 32
+2024-09-26 15:57:02.343	[DEBUG]:	batter temprature class size: 32
+2024-09-26 15:57:02.343	[DEBUG]:	batter level class size: 32
+2024-09-26 15:57:02.343	[DEBUG]:	car class size: 40

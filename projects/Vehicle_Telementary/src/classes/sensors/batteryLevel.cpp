@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../../headers/batteryLevel.hpp"
+#include "../../headers/logger.hpp"
 
  
 constexpr int minBatteryLevel = 0; // 0% 

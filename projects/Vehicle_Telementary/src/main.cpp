@@ -5,6 +5,7 @@
 #include "headers/batteryLevel.hpp"
 #include "headers/batteryTemp.hpp"
 #include "headers/car.hpp"
+#include "headers/logger.hpp"
 
 #include <iostream>
 
@@ -14,7 +15,6 @@ using namespace std;
 int main(){
 
     Logger::getInstance()->setLogLevel(debug_4);
-    Logger::getInstance()->clean("all");
 
     SpeedSensor speedSensor;
     RadarSensor radarSensor;
@@ -33,16 +33,15 @@ int main(){
     
     int counter = 0;
     while(true){
+        counter++;        
         Logger::getInstance()->analysis("Begin loop number ", counter);
         
         car.generateRandomVal();
         car.adaptiveCruiseControl();
-        // car.showData();
-        // car.diagnostics();
+        car.showData();
+        car.diagnostics();
 
         Logger::getInstance()->analysis("End loop number ", counter);
-
-        counter++;        
     }    
 
     Logger::getInstance()->~Logger();

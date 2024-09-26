@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../../headers/batteryTemp.hpp"
+#include "../../headers/logger.hpp"
 
 
 constexpr int minBatteryTemp = -40; // -40°C 
