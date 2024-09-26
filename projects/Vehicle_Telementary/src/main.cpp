@@ -22,17 +22,19 @@ int main(){
 
     Car car(speedSensor, radarSensor, tempSensor, batteryLvl, batterytemp);
     
+    Logger::getInstance()->setLogLevel(debug_4);
+
     int counter = 0;
     while(true){
         Logger::getInstance()->analysis("Loop begin");
-        
         car.generateRandomVal();
         car.adaptiveCruiseControl();
-        car.showData();
-        car.diagnostics();
+        // car.showData();
+        // car.diagnostics();
 
         Logger::getInstance()->analysis("Loop end");
 
         counter++;        
     }    
+
 }

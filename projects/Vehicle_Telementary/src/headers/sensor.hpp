@@ -12,7 +12,7 @@ private:
     // Diagnostics diagnos;
     
 protected:
-    // Logger log(logLevel data_2); // this breaks the second rule of SOLID principles ?
+    // Logger log(logLevel data_2); // this breaks the second rule of SOLID principles
 
     /*Dependency Injection*/ 
     // Logger* log; // Logger should be passed through the constructor to follow SOLID principles
@@ -31,7 +31,7 @@ public:
     virtual void printValue() const = 0; // pure virtual fn so its an abstract class
     bool isAlert(); // this fn helps to keep the class solid by exposing terminals to check on the sensor state
                     // with no need for passing any values to non-child classes.
-    
+
 };
 
 #endif // SENSOR_H

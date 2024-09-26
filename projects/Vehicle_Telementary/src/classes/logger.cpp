@@ -26,11 +26,12 @@ std::string time_ms() {
     return timeStream.str();
 }
 
-Logger::Logger(): level(off){
-    alertsFile.open("../logs/alerts.txt", std::ios::app);
-    analysisFile.open("../logs/analysis.txt", std::ios::app);
-    infoFile.open("../logs/info.txt", std::ios::app);
-    debugFile.open("../logs/debug.txt", std::ios::app);
+Logger::Logger(): level(debug_4){
+    alertsFile.open("logs/alerts.txt", std::ios::app);
+    analysisFile.open("logs/analysis.txt", std::ios::app);
+    infoFile.open("logs/info.txt", std::ios::app);
+    debugFile.open("logs/debug.txt", std::ios::app);
+
 }
 
 void Logger::setLogLevel(logLevel l){
