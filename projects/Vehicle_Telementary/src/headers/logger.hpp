@@ -13,18 +13,25 @@ enum logLevel{
 
 class Logger{
 private:
+    static Logger* instance; // Pointer to the single instance
+
     logLevel level;
     std::ofstream alertsFile;
     std::ofstream analysisFile;
     std::ofstream infoFile;
     std::ofstream debugFile;
 
+    Logger(); // private constructor to prevent instantiation
 
 public:
-    Logger(logLevel l);
-    Logger();
 
-    void clean(std::string fileName);
+    static Logger* getInstance(){
+        if(!instance){ // only one pointer to a single instance
+            instance = new Logger();
+        }
+        return instance;
+    }
+
     void setLogLevel(logLevel l);    
 
     void alert(std::string message);
@@ -32,7 +39,13 @@ public:
     void info(std::string message, int num);
     void debug(std::string message, int num);
     
+    void clean(std::string fileName);
+    
     friend std::string time_ms();
+
+    // Deleting copy constructor and assignment operator to prevent copies
+    Logger(Logger const&) = delete;
+    void operator=(Logger const&) = delete;
 
     ~Logger();
 };

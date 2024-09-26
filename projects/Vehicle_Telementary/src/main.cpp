@@ -21,19 +21,18 @@ int main(){
     BatteryTempSensor batterytemp;
 
     Car car(speedSensor, radarSensor, tempSensor, batteryLvl, batterytemp);
-    Logger log(debug_4);
-
-    // log.clean("all");
     
-    log.alert("You Have To Pray NOW!!! ");
-    log.info("You Have To Pray NOW!!! ", 1);
-    log.analysis("You Have To Pray NOW!!! ");
-    log.debug("You Have To Pray NOW!!! ", 5.44);
-    
+    int counter = 0;
     while(true){
+        Logger::getInstance()->analysis("Loop begin");
+        
         car.generateRandomVal();
         car.adaptiveCruiseControl();
         car.showData();
-        car.diagnostics();        
+        car.diagnostics();
+
+        Logger::getInstance()->analysis("Loop end");
+
+        counter++;        
     }    
 }

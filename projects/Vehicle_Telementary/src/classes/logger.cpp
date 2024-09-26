@@ -6,6 +6,8 @@
 #include <sstream>
 #include <string>
 
+Logger* Logger::instance = nullptr; 
+
 // friend fn
 std::string time_ms() {
     // Get the current time point from the high-resolution clock
@@ -24,12 +26,6 @@ std::string time_ms() {
     return timeStream.str();
 }
 
-Logger::Logger(logLevel l) : level(l){
-    alertsFile.open("../logs/alerts.txt", std::ios::app);
-    analysisFile.open("../logs/analysis.txt", std::ios::app);
-    infoFile.open("../logs/info.txt", std::ios::app);
-    debugFile.open("../logs/debug.txt", std::ios::app);
-}
 Logger::Logger(): level(off){
     alertsFile.open("../logs/alerts.txt", std::ios::app);
     analysisFile.open("../logs/analysis.txt", std::ios::app);
@@ -78,6 +74,9 @@ void Logger::debug(std::string message, int num){
 }
 
 void Logger::clean(std::string fileName){ // to delete all files just pass "all"
+
+    /* FIX IT*/
+
     if (fileName == "alerts" || fileName == "all")
         alertsFile.open("../logs/alerts.txt", std::ios::trunc);
     if (fileName == "analysis" || fileName == "all")
