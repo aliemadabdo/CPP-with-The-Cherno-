@@ -34,13 +34,13 @@ public:
 
     void setLogLevel(logLevel l);    
 
-    void alert(std::string message);
-    void analysis(std::string message);
-    void info(std::string message, int num);
-    void debug(std::string message, int num);
+    void alert(std::string message, float num);
+    void analysis(std::string message, float num);
+    void info(std::string message, float num);
+    void debug(std::string message, float num);
     
     void clean(std::string fileName);
-    
+    void closeAll();
     friend std::string time_ms();
 
     // Deleting copy constructor and assignment operator to prevent copies

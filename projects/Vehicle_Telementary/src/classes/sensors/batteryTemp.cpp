@@ -8,7 +8,9 @@ constexpr int maxBatteryTemp = 55; // 55°C
 // Define thresholds for alerts
 constexpr float batteryTempAlert = 0.9f;
 
-BatteryTempSensor::BatteryTempSensor(): Sensor(minBatteryTemp, maxBatteryTemp, batteryTempAlert, batteryTempAlert){}
+BatteryTempSensor::BatteryTempSensor(): Sensor(minBatteryTemp, maxBatteryTemp, batteryTempAlert, batteryTempAlert){
+    Logger::getInstance()->info("That's all about battery temprature sensor\n",0000);
+}
 
 void BatteryTempSensor::printValue() const  {
     std::cout << "Battery temp: " << getValue() << "`C\t";

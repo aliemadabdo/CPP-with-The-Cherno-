@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 
-Logger* Logger::instance = nullptr; 
+Logger* Logger::instance = nullptr; // Explain...
 
 // friend fn
 std::string time_ms() {
@@ -26,71 +26,22 @@ std::string time_ms() {
     return timeStream.str();
 }
 
-Logger::Logger(): level(debug_4){
-    alertsFile.open("logs/alerts.txt", std::ios::app);
-    analysisFile.open("logs/analysis.txt", std::ios::app);
-    infoFile.open("logs/info.txt", std::ios::app);
-    debugFile.open("logs/debug.txt", std::ios::app);
-
-}
-
-void Logger::setLogLevel(logLevel l){
-    level = l;
-}
-
-void Logger::alert(std::string message){
-    if(level < alerts_1) return;
-    
-    if(!alertsFile.is_open())
-        std::cerr << "Failed to open the alerts file" << std::endl;
-
-    alertsFile << time_ms() << "\t[ALERT]:\t" << message << std::endl;
-}
-
-void Logger::analysis(std::string message){
-    if(level < analysis_2) return;
-
-    if(!analysisFile.is_open())
-        std::cerr << "Failed to open the analysis File" << std::endl;
-
-    analysisFile << time_ms() << "\t[ANALYSIS]:\t" << message << std::endl;
-}
-
-void Logger::info(std::string message, int num){
-    if(level < info_3) return;
-    
-      if(!infoFile.is_open())
-        std::cerr << "Failed to open the info File" << std::endl;
-
-    infoFile << time_ms() << "\t[INFO]:\t" << message << num << std::endl;
-}
-
-void Logger::debug(std::string message, int num){
-    if(level < debug_4) return;
-
-       if(!debugFile.is_open())
-        std::cerr << "Failed to open the debug File" << std::endl;
-
-    debugFile << time_ms() << "\t[DEBUG]:\t" << message << num << std::endl;
-}
-
 void Logger::clean(std::string fileName){ // to delete all files just pass "all"
 
     /* FIX IT*/
 
     if (fileName == "alerts" || fileName == "all")
-        alertsFile.open("../logs/alerts.txt", std::ios::trunc);
+        alertsFile.open("logs/alerts.txt", std::ios::trunc);
     if (fileName == "analysis" || fileName == "all")
-        analysisFile.open("../logs/analysis.txt", std::ios::trunc);
+        analysisFile.open("logs/analysis.txt", std::ios::trunc);
     if (fileName == "info" || fileName == "all")
-        infoFile.open("../logs/info.txt", std::ios::trunc);
+        infoFile.open("logs/info.txt", std::ios::trunc);
     if (fileName == "debug" || fileName == "all")
-        debugFile.open("../logs/debug.txt", std::ios::trunc);
+        debugFile.open("logs/debug.txt", std::ios::trunc);
 }
 
-// Destructor: Ensures files are closed
-Logger::~Logger() {
-    if (alertsFile.is_open()) {
+void Logger::closeAll(){
+        if (alertsFile.is_open()) {
         alertsFile.close();
     }
     if (analysisFile.is_open()) {
@@ -102,5 +53,62 @@ Logger::~Logger() {
     if (debugFile.is_open()) {
         debugFile.close();
     }
+}
+
+Logger::Logger(): level(debug_4){
+    clean("all");
+    closeAll();
+
+    alertsFile.open("logs/alerts.txt", std::ios::app);
+    analysisFile.open("logs/analysis.txt", std::ios::app);
+    infoFile.open("logs/info.txt", std::ios::app);
+    debugFile.open("logs/debug.txt", std::ios::app);
+
+}
+
+void Logger::setLogLevel(logLevel l){
+    level = l;
+}
+
+void Logger::alert(std::string message, float num){
+    if(level < alerts_1) return;
+    
+    if(!alertsFile.is_open())
+        std::cerr << "Failed to open the alerts file" << std::endl;
+
+    alertsFile << time_ms() << "\t[ALERT]:\t" << message << num << std::endl;
+}
+
+void Logger::analysis(std::string message, float num){
+    if(level < analysis_2) return;
+
+    if(!analysisFile.is_open())
+        std::cerr << "Failed to open the analysis File" << std::endl;
+
+    analysisFile << time_ms() << "\t[ANALYSIS]:\t" << message << num << std::endl;
+}
+
+void Logger::info(std::string message, float num){
+    if(level < info_3) return;
+    
+      if(!infoFile.is_open())
+        std::cerr << "Failed to open the info File" << std::endl;
+
+    infoFile << time_ms() << "\t[INFO]:\t" << message << num << std::endl;
+}
+
+void Logger::debug(std::string message, float num){
+    if(level < debug_4) return;
+
+       if(!debugFile.is_open())
+        std::cerr << "Failed to open the debug File" << std::endl;
+
+    debugFile << time_ms() << "\t[DEBUG]:\t" << message << num << std::endl;
+}
+
+
+// Destructor: Ensures files are closed
+Logger::~Logger() {
+    closeAll();
 }
 

@@ -15,11 +15,13 @@ int Sensor::getValue() const {
 }
 
 void Sensor::setRandomValue() {
-        value = lowerBound + std::rand() % (upperBound - lowerBound + 1);
+    value = lowerBound + std::rand() % (upperBound - lowerBound + 1);
+    Logger::getInstance()->info("Value: ",value);
 }
 
 void Sensor::setValue(int val) {
-        value = val;
+    value = val;
+    Logger::getInstance()->info("Speed while appling breaks: ",value);
 }
 
 bool Sensor::isAlert(){
