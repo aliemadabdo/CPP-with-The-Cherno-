@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\sensors\speed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\sensors\radar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\sensors\engineTemp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\sensors\batteryTemp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\sensors\batteryLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\sensor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\src\classes\car.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C3D25BF8-4F27-39CA-BD69-4C9D5AEB97AB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Mega Store\Documents\GitHub\CPP-with-The-Cherno-\projects\Vehicle_Telementary\build\CMakeFiles\8ec428062aa18907ae793247b14dafd0\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{7800992E-DE09-3C13-917B-84AB66C012E4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+^C:\USERS\MEGA STORE\DOCUMENTS\GITHUB\CPP-WITH-THE-CHERNO-\PROJECTS\VEHICLE_TELEMENTARY\BUILD\CMAKEFILES\8EC428062AA18907AE793247B14DAFD0\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Mega Store/Documents/GitHub/CPP-with-The-Cherno-/projects/Vehicle_Telementary" "-BC:/Users/Mega Store/Documents/GitHub/CPP-with-The-Cherno-/projects/Vehicle_Telementary/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Mega Store/Documents/GitHub/CPP-with-The-Cherno-/projects/Vehicle_Telementary/build/vehicle_telementary.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

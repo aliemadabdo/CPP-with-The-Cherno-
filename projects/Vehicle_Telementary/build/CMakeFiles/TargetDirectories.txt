@@ -1,0 +1,3 @@
+C:/Users/Mega Store/Documents/GitHub/CPP-with-The-Cherno-/projects/Vehicle_Telementary/build/CMakeFiles/vehicle_telementary.dir
+C:/Users/Mega Store/Documents/GitHub/CPP-with-The-Cherno-/projects/Vehicle_Telementary/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Mega Store/Documents/GitHub/CPP-with-The-Cherno-/projects/Vehicle_Telementary/build/CMakeFiles/ZERO_CHECK.dir
