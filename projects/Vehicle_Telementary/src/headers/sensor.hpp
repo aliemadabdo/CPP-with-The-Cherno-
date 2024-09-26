@@ -6,7 +6,8 @@
 class Sensor{ // Abstract class
 private:
     int value;
-    int lowerBound = 0, upperBound = 100;
+    int lowerBound, upperBound;
+    float upperAlertThreshold, lowerAlertThreshold;
 
     // Diagnostics diagnos;
     
@@ -18,17 +19,19 @@ protected:
 
 
     void setValue(int val);
-    int getUpperBound();
-    int getLowerBound();
+    // int getUpperBound();
+    // int getLowerBound();
 
 public:
-    Sensor(int start, int end);
+    Sensor(int start, int end, float upperAlert, float lowerAlert);
     Sensor(){}
 
     int getValue() const;    
     virtual void setRandomValue();
     virtual void printValue() const = 0; // pure virtual fn so its an abstract class
-
+    bool isAlert(); // this fn helps to keep the class solid by exposing terminals to check on the sensor state
+                    // with no need for passing any values to non-child classes.
+    
 };
 
 #endif // SENSOR_H

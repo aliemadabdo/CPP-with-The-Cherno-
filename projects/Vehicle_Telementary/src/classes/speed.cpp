@@ -1,9 +1,14 @@
 #include <iostream>
 #include "../headers/speed.hpp"
 
+/*Sensor Range*/
+constexpr int backSpeed = -50; // 50 km/h backward
+constexpr int forwardSpeed = 100; // 100 km/h forward
+constexpr float forwardSpeedAlert = 0.8f; // 80km/h
+constexpr float backSpeedAlert = 0.9f; // -45 km/h
 
-SpeedSensor::SpeedSensor(int start, int end) : Sensor(start, end) {}
-SpeedSensor::SpeedSensor(){} // as the drived class constructs the base class so, 
+SpeedSensor::SpeedSensor() : Sensor(backSpeed, forwardSpeed, forwardSpeedAlert, backSpeedAlert) {}
+                 // as the drived class constructs the base class so, 
                 // we will need a default constructor for the drived and base classes
 
 void SpeedSensor::printValue() const  {
@@ -11,8 +16,15 @@ void SpeedSensor::printValue() const  {
 }
 
 void breaks(SpeedSensor& ss){
-    while(ss.getValue() > ss.getUpperBound()*0.8){
-        std::cout << "\n[ALERT] Speed decreased to: " << ss.getValue() << "km/h" << std::endl;
-        ss.setValue(ss.getValue()-1); 
+    while(ss.isAlert()){
+        int val = ss.getValue();
+        if (val > 0){
+            ss.setValue(val-1); 
+            std::cout << "\n[ALERT] Speed decreased to: " << val-1 << "km/h" << std::endl;
+        }
+        else{
+            ss.setValue(val+1); 
+            std::cout << "\n[ALERT] Speed increased to: " << val+1 << "km/h" << std::endl;
+        }
     }     
 }

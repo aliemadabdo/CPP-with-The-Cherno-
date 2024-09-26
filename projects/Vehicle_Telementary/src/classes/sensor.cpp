@@ -2,7 +2,10 @@
 
 #include "../headers/sensor.hpp"
 
-Sensor::Sensor(int start, int end) : lowerBound(start), upperBound(end){}
+
+
+Sensor::Sensor(int start, int end, float upperAlert, float lowerAlert) 
+: lowerBound(start), upperBound(end), upperAlertThreshold(upperAlert), lowerAlertThreshold(lowerAlert) {}
 
 int Sensor::getValue() const {
     return value;
@@ -18,10 +21,15 @@ void Sensor::setValue(int val) {
         value = val;
 }
 
-int Sensor::getUpperBound(){
-    return upperBound;
+bool Sensor::isAlert(){
+    return ((value < lowerAlertThreshold*lowerBound) || (value > upperAlertThreshold*upperBound));
 }
 
-int Sensor::getLowerBound(){
-    return lowerBound;
-}
+// int Sensor::getUpperBound(){
+//     return upperBound;
+// }
+
+// int Sensor::getLowerBound(){
+//     return lowerBound;
+// }
+

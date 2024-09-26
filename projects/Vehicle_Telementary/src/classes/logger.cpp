@@ -1,40 +1,91 @@
 #include "../headers/logger.hpp"
 #include <fstream>
 #include <iostream>
+#include <chrono>
+#include <iomanip>
+#include <sstream>
+#include <string>
 
+// friend fn
+std::string time_ms() {
+    // Get the current time point from the high-resolution clock
+    auto currentTimePoint = std::chrono::system_clock::now();
+    
+    // Convert to time_t for formatting
+    std::time_t currentTime = std::chrono::system_clock::to_time_t(currentTimePoint);
 
+    // Create a struct to hold the formatted time
+    std::tm* localTime = std::localtime(&currentTime);
+
+    // Use a string stream to format the time as YYYY-MM-DD HH:MM:SS
+    std::ostringstream timeStream;
+    timeStream << std::put_time(localTime, "%Y-%m-%d %H:%M:%S");
+
+    return timeStream.str();
+}
 
 Logger::Logger(logLevel l) : level(l){
     alertsFile.open("../logs/alerts.txt", std::ios::app);
-    dataFile.open("../logs/data.txt", std::ios::app);
+    analysisFile.open("../logs/analysis.txt", std::ios::app);
+    infoFile.open("../logs/info.txt", std::ios::app);
+    debugFile.open("../logs/debug.txt", std::ios::app);
 }
 Logger::Logger(): level(off){
     alertsFile.open("../logs/alerts.txt", std::ios::app);
-    dataFile.open("../logs/data.txt", std::ios::app);
+    analysisFile.open("../logs/analysis.txt", std::ios::app);
+    infoFile.open("../logs/info.txt", std::ios::app);
+    debugFile.open("../logs/debug.txt", std::ios::app);
 }
 
 void Logger::setLogLevel(logLevel l){
     level = l;
 }
 
-void Logger::alert(std::string s){
+void Logger::alert(std::string message){
     if(level < alerts_1) return;
-
+    
     if(!alertsFile.is_open())
         std::cerr << "Failed to open the alerts file" << std::endl;
 
-    alertsFile << "[ALERT]: " << s;
-
+    alertsFile << time_ms() << "\t[ALERT]:\t" << message << std::endl;
 }
-template<typename T>
-void Logger::data(T logs){
-    if(level < data_2) return;
 
+void Logger::analysis(std::string message){
+    if(level < analysis_2) return;
 
-    if(!dataFile.is_open())
-        std::cerr << "Failed to open the data file" << std::endl;
+    if(!analysisFile.is_open())
+        std::cerr << "Failed to open the analysis File" << std::endl;
 
-    dataFile << logs;
+    analysisFile << time_ms() << "\t[ANALYSIS]:\t" << message << std::endl;
+}
+
+void Logger::info(std::string message, int num){
+    if(level < info_3) return;
+    
+      if(!infoFile.is_open())
+        std::cerr << "Failed to open the info File" << std::endl;
+
+    infoFile << time_ms() << "\t[INFO]:\t" << message << num << std::endl;
+}
+
+void Logger::debug(std::string message, int num){
+    if(level < debug_4) return;
+
+       if(!debugFile.is_open())
+        std::cerr << "Failed to open the debug File" << std::endl;
+
+    debugFile << time_ms() << "\t[DEBUG]:\t" << message << num << std::endl;
+}
+
+void Logger::clean(std::string fileName){ // to delete all files just pass "all"
+    if (fileName == "alerts" || fileName == "all")
+        alertsFile.open("../logs/alerts.txt", std::ios::trunc);
+    if (fileName == "analysis" || fileName == "all")
+        analysisFile.open("../logs/analysis.txt", std::ios::trunc);
+    if (fileName == "info" || fileName == "all")
+        infoFile.open("../logs/info.txt", std::ios::trunc);
+    if (fileName == "debug" || fileName == "all")
+        debugFile.open("../logs/debug.txt", std::ios::trunc);
 }
 
 // Destructor: Ensures files are closed
@@ -42,7 +93,14 @@ Logger::~Logger() {
     if (alertsFile.is_open()) {
         alertsFile.close();
     }
-    if (dataFile.is_open()) {
-        dataFile.close();
+    if (analysisFile.is_open()) {
+        analysisFile.close();
+    }
+    if (infoFile.is_open()) {
+        infoFile.close();
+    }
+    if (debugFile.is_open()) {
+        debugFile.close();
     }
 }
+

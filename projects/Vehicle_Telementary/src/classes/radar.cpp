@@ -1,9 +1,13 @@
 #include <iostream>
 #include "../headers/radar.hpp"
 
+constexpr int maxDistance = 300; // 300 meter
+constexpr int minDistance = 0; // 300 meter
+constexpr float mindistanceAlertThreshold = 0.1; // 30 meter
+constexpr float maxdistanceAlertThreshold = 1; // 300 meter
 
-RadarSensor::RadarSensor(int start, int end) : Sensor(start, end) {}
-RadarSensor::RadarSensor(){} // as the drived class constructs the base class so, 
+RadarSensor::RadarSensor() : Sensor(minDistance, maxDistance, maxdistanceAlertThreshold, mindistanceAlertThreshold) {}
+                // as the drived class constructs the base class so, 
                 // we will need a default constructor for the drived and base classes
 
 void RadarSensor::printValue() const  {

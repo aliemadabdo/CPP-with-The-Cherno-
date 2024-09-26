@@ -1,18 +1,16 @@
-#ifndef RADAR_SENSOR_H
-#define RADAR_SENSOR_H
+#ifndef BATTERY_Level_H
+#define BATTERY_Level_H
 
 #include "sensor.hpp"
 
-class RadarSensor : public Sensor {
+class BatteryLevelSensor : public Sensor {
 // Default inheritance access: private if no modifier is specified.
 
-private:
-
 public:
-    RadarSensor();
-    // void setRandomValue(int start, int end); // optional to change
+    BatteryLevelSensor();
+
     void printValue() const override;  // Override the pure virtual function from Sensor
     // the override key word is optional here
 };
 
-#endif // RADAR_SENSOR_H
+#endif // BATTERY_Level_SENSOR_H

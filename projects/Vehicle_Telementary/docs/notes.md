@@ -10,6 +10,8 @@
 - we need to create n threads, where n = the # sensors
 - after a simple investigation inside the thread lib, i found that thread library is only POSIX complaint so i can not apply this on windows [but the chatGPT say that it should work so i will let it as a future work]
 - In some cases, using friend is a cleaner solution than adding public accessor methods.
+- where to use the logger
+-  
 
 ### Is It OOP Compliant?
 

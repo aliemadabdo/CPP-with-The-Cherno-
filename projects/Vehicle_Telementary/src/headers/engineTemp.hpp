@@ -9,7 +9,6 @@ class TempratureSensor : public Sensor {
 private:
 
 public:
-    TempratureSensor(int start, int end);
     TempratureSensor();
     // void setRandomValue(int start, int end); // optional to change
     void printValue() const override;  // Override the pure virtual function from Sensor
