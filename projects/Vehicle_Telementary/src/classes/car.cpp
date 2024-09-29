@@ -6,16 +6,6 @@
 
 Car::Car(std::vector<std::unique_ptr<Sensor>>& sens) {
     sensors = &sens;
-
-    std::cout << "After passing" << std::endl;
-
-    std::cout << "(*sensors)[0].get(): " << (*sensors)[0].get() << std::endl;
-    std::cout << "&sensors[0]: " << &sensors[0] << std::endl;
-    std::cout << "&sensors: " << &sensors << std::endl;
-    std::cout << "sensors: " << sensors << std::endl;
-
-    std::cout << "." << std::endl;
-
 }
 
 // Polymorphism 
@@ -23,8 +13,7 @@ void Car::generateRandomVal(){
     // due to unqieneess we can't assign the variable to more than one pointer 
     // so we have to use refernces
     for(const auto &s : *sensors){ 
-        std::cout << "generateRandomVal(): " << (s.get()) << std::endl; 
-        s.get()->setRandomValue();
+        s->setRandomValue();
     }
 }
 
@@ -34,10 +23,7 @@ void Car::showData(){
     // It signals to other developers (or to yourself in the future) that
     // the elements being iterated over should not be modified.
     for(const auto &s : *sensors){
-        std::cout << "showData()" << std::endl;
-        s.get()->printValue();
-                std::cout << "." << std::endl;
-
+        s->printValue();
     }
     std::cout << std::endl;
 }
@@ -72,5 +58,5 @@ void Car::adaptiveCruiseControl() {
     }  
     // TODO: add relation between speed and distance
 
-    free(speedSensor);
+    // free(speedSensor); // this was deleting the allocted memory for the speedSensor object
 }

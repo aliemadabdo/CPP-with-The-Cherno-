@@ -13,7 +13,6 @@ Sensor::Sensor(int start, int end, float upperAlert, float lowerAlert)
 
 #include <iostream>
 int Sensor::getValue() const {
-    std::cout << "getValue()" << std::endl;
     return value;
 }
 

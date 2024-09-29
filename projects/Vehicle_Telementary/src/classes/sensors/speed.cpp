@@ -15,7 +15,6 @@ SpeedSensor::SpeedSensor() : Sensor(backSpeed, forwardSpeed, forwardSpeedAlert, 
                 // we will need a default constructor for the drived and base classes
 
 void SpeedSensor::printValue() const  {
-    std::cout << "printValue()" << std::endl;
     std::cout << " Speed: " << getValue() << "km/h\t\t";
 }
 

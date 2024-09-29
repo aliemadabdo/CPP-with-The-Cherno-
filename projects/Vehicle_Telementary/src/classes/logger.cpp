@@ -60,10 +60,10 @@ void Logger::closeAll(){
 }
 
 Logger::Logger(): level(debug_4){
-    // clean("all");
-    // std::cout << "all cleaned.\n";
-    // closeAll();
-    // std::cout << "all closed.\n";
+    clean("all");
+    std::cout << "all cleaned.\n";
+    closeAll();
+    std::cout << "all closed.\n";
 
     alertsFile.open("logs/alerts.txt", std::ios::app);
     analysisFile.open("logs/analysis.txt", std::ios::app);

@@ -23,18 +23,6 @@ int main(){
     sensors.push_back(std::make_unique<TempratureSensor>());
     sensors.push_back(std::make_unique<BatteryLevelSensor>());
     sensors.push_back(std::make_unique<BatteryTempSensor>());
-    
-    for(const auto &s : sensors){
-        std::cout << "Real Addresses: " << &s << std::endl;
-    }
-
-sensors[0].get()->setValue(5);
-    std::cout << "sensors[0].get(): " << sensors[0].get()->getValue() << std::endl;
-    std::cout << "sensors[0].get(): " << sensors[0]->getValue() << std::endl;
-    // std::cout << "&sensors[0]: " << &sensors[0].get() << std::endl;
-    std::cout << "&sensors: " << &sensors << std::endl;
-    std::cout << "&sensors[0]: " << &sensors[0] << std::endl;
-
 
     Car car(sensors);
         
@@ -48,15 +36,11 @@ sensors[0].get()->setValue(5);
     while(true){
         counter++;        
         Logger::getInstance()->analysis("Begin loop number ", counter);
-        std::cout << "." << std::endl;
+        
         car.generateRandomVal();
-        std::cout << "." << std::endl;
         car.adaptiveCruiseControl();
-        std::cout << "." << std::endl;
         car.showData();
-        std::cout << "." << std::endl;
         car.diagnostics();
-        std::cout << "." << std::endl;
 
         Logger::getInstance()->analysis("End loop number ", counter);
     }    
