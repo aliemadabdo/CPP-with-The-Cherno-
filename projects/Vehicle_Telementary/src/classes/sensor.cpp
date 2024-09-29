@@ -11,7 +11,9 @@ Sensor::Sensor(int start, int end, float upperAlert, float lowerAlert)
     Logger::getInstance()->info("Upper Bound alert at: ", upperAlert);
 }
 
+#include <iostream>
 int Sensor::getValue() const {
+    std::cout << "getValue()" << std::endl;
     return value;
 }
 

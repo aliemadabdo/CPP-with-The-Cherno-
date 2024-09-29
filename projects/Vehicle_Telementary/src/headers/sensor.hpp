@@ -8,8 +8,6 @@ private:
     int value;
     int lowerBound, upperBound;
     float upperAlertThreshold, lowerAlertThreshold;
-
-    // Diagnostics diagnos;
     
 protected:
     // Logger log(logLevel data_2); // this breaks the second rule of SOLID principles
@@ -17,8 +15,6 @@ protected:
     /*Dependency Injection*/ 
     // Logger* log; // Logger should be passed through the constructor to follow SOLID principles
 
-
-    void setValue(int val);
     // int getUpperBound();
     // int getLowerBound();
 
@@ -26,6 +22,7 @@ public:
     Sensor(int start, int end, float upperAlert, float lowerAlert);
     Sensor(){}
 
+    void setValue(int val);
     int getValue() const;    
     virtual void setRandomValue();
     virtual void printValue() const = 0; // pure virtual fn so its an abstract class

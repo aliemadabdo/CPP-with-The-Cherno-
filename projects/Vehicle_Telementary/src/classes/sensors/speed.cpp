@@ -15,18 +15,19 @@ SpeedSensor::SpeedSensor() : Sensor(backSpeed, forwardSpeed, forwardSpeedAlert, 
                 // we will need a default constructor for the drived and base classes
 
 void SpeedSensor::printValue() const  {
+    std::cout << "printValue()" << std::endl;
     std::cout << " Speed: " << getValue() << "km/h\t\t";
 }
 
-void breaks(SpeedSensor& ss){
-    while(ss.isAlert()){
-        int val = ss.getValue();
+void applyBrakes(Sensor* ss){
+    while(ss->isAlert()){ 
+        int val = ss->getValue();
         if (val > 0){
-            ss.setValue(val-1); 
+            ss->setValue(val-1); 
             Logger::getInstance()->alert("BREAKS!! Speed decreased to (km/h): ", val-1);
         }
         else{
-            ss.setValue(val+1); 
+            ss->setValue(val+1); 
             Logger::getInstance()->alert("BREAKS!! Speed decreased to (km/h): ", val+1); // -ve
         }
     }     

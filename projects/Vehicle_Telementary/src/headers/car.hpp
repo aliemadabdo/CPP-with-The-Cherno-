@@ -9,17 +9,17 @@
 #include "batteryLevel.hpp"
 #include "batteryTemp.hpp"
 
+enum index{
+    speedSensor=0, radarSensor, tempSensor, batteryLvl, batteryTemp
+};
+
 class Car{
 private:
-    SpeedSensor* speedSensor;
-    RadarSensor* radarSensor;
-    TempratureSensor* tempSensor;
-    BatteryLevelSensor* batteryLvl;
-    BatteryTempSensor* batteryTemp;
+
+    std::vector<std::unique_ptr<Sensor>>* sensors;
 
 public:
-    Car(SpeedSensor& speedSensor, RadarSensor& radarSensor, TempratureSensor& tempSensor,
-     BatteryLevelSensor& batteryLvl, BatteryTempSensor& batteryTemp);
+    Car(std::vector<std::unique_ptr<Sensor>>& sens);
     
     void generateRandomVal();
     void showData();
