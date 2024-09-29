@@ -20,6 +20,7 @@ private:
 
 public:
     Car(std::vector<std::unique_ptr<Sensor>>& sens);
+    ~Car();
     
     void generateRandomVal();
     void showData();

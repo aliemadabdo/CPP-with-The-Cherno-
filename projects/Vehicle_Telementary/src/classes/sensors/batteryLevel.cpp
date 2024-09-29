@@ -16,3 +16,4 @@ void BatteryLevelSensor::printValue() const  {
     std::cout << "Battery Level: " << getValue() << "`C\t";
 }
 
+BatteryLevelSensor::~BatteryLevelSensor(){}

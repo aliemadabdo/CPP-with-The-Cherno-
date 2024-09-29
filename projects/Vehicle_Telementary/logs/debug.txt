@@ -1,5 +1,5 @@
-2024-09-29 06:42:18.005	[DEBUG]:	sensors vector of unique_ptrs to Sensor class size: 5
-2024-09-29 06:42:18.005	[DEBUG]:	unique_ptrs to radar class size: 8
-2024-09-29 06:42:18.005	[DEBUG]:	radar class size: 32
-2024-09-29 06:42:18.005	[DEBUG]:	engine temprature Enum size: 4
-2024-09-29 06:42:18.005	[DEBUG]:	car class size: 8
+2024-09-29 06:55:59.464	[DEBUG]:	sensors vector of unique_ptrs to Sensor class size: 5
+2024-09-29 06:55:59.464	[DEBUG]:	unique_ptrs to radar class size: 8
+2024-09-29 06:55:59.464	[DEBUG]:	radar class size: 32
+2024-09-29 06:55:59.464	[DEBUG]:	engine temprature Enum size: 4
+2024-09-29 06:55:59.464	[DEBUG]:	car class size: 8

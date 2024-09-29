@@ -8,6 +8,7 @@ class BatteryTempSensor : public Sensor {
 
 public:
     BatteryTempSensor();
+    ~BatteryTempSensor();
 
     void printValue() const override;  // Override the pure virtual function from Sensor
     // the override key word is optional here

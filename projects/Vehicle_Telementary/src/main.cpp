@@ -45,6 +45,6 @@ int main(){
         Logger::getInstance()->analysis("End loop number ", counter);
     }    
 
-    Logger::getInstance()->~Logger();
+    // Logger::getInstance()->~Logger(); // This is unnecessary since destructors are automatically called when the program exits.
 
 }

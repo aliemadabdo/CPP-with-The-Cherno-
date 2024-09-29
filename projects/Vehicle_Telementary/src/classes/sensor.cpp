@@ -11,7 +11,9 @@ Sensor::Sensor(int start, int end, float upperAlert, float lowerAlert)
     Logger::getInstance()->info("Upper Bound alert at: ", upperAlert);
 }
 
-#include <iostream>
+Sensor::Sensor(){}
+
+
 int Sensor::getValue() const {
     return value;
 }
@@ -29,6 +31,8 @@ void Sensor::setValue(int val) {
 bool Sensor::isAlert(){
     return ((value < lowerAlertThreshold*lowerBound) || (value > upperAlertThreshold*upperBound));
 }
+
+Sensor::~Sensor(){}
 
 // int Sensor::getUpperBound(){
 //     return upperBound;

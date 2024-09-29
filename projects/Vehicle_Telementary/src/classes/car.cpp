@@ -60,3 +60,5 @@ void Car::adaptiveCruiseControl() {
 
     // free(speedSensor); // this was deleting the allocted memory for the speedSensor object
 }
+
+Car::~Car(){}

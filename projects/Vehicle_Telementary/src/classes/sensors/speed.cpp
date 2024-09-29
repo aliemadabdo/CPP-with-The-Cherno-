@@ -18,6 +18,8 @@ void SpeedSensor::printValue() const  {
     std::cout << " Speed: " << getValue() << "km/h\t\t";
 }
 
+SpeedSensor::~SpeedSensor(){}
+
 void applyBrakes(Sensor* ss){
     while(ss->isAlert()){ 
         int val = ss->getValue();

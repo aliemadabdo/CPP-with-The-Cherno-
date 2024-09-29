@@ -17,6 +17,8 @@ void BatteryTempSensor::printValue() const  {
     std::cout << "Battery temp: " << getValue() << "`C\t";
 }
 
+BatteryTempSensor::~BatteryTempSensor(){}
+
 
 /*Old implementation*/
 // int BatterySensor::getTemp() const{

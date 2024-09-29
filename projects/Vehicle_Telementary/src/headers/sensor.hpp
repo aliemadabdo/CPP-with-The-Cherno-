@@ -20,7 +20,8 @@ protected:
 
 public:
     Sensor(int start, int end, float upperAlert, float lowerAlert);
-    Sensor(){}
+    Sensor();
+    ~Sensor();
 
     void setValue(int val);
     int getValue() const;    

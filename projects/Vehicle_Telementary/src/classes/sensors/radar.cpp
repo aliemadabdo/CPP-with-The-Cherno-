@@ -16,3 +16,5 @@ RadarSensor::RadarSensor() : Sensor(minDistance, maxDistance, maxdistanceAlertTh
 void RadarSensor::printValue() const  {
     std::cout << " Distance: " << getValue() << "m\t";
 }
+
+RadarSensor::~RadarSensor(){}

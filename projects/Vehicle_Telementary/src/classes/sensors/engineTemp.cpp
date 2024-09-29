@@ -16,3 +16,5 @@ TempratureSensor::TempratureSensor() : Sensor(minEngineTemp, maxEngineTemp, engi
 void TempratureSensor::printValue() const  {
     std::cout << " Engine temp: " << getValue() << "*C\t"; // \u00B0 represents the Unicode character for the degree symbol (°).
 }
+
+TempratureSensor::~TempratureSensor(){}
