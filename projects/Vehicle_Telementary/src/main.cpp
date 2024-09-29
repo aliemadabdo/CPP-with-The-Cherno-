@@ -33,7 +33,7 @@ int main(){
     Logger::getInstance()->debug("car class size: ", sizeof(car));    
     
     int counter = 0;
-    while(true){
+    while(counter < 1000){
         counter++;        
         Logger::getInstance()->analysis("Begin loop number ", counter);
         

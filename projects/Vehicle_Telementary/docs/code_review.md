@@ -58,7 +58,7 @@
    // The derived class constructor initializes the base class with sensor thresholds.
    ```
 
-7. **Performance Considerations**: [ALREADY MANAGED]
+7. **Performance Considerations**: [DONE]
    - **Issue**: The current implementation logs every single operation, including sensor value generation, which can result in I/O bottlenecks.
    - **Suggestion**: If performance is a concern, consider optimizing the logging system by batching log writes or providing an option to disable logging in production environments.
 
@@ -66,11 +66,11 @@
    - **Issue**: Every time a log message is written, the code checks if the respective log file is open. This can be inefficient and redundant if the files are opened once during initialization and closed upon destruction.
    - **Suggestion**: Ensure that files are opened during initialization and close them only at the end. There’s no need to check if the files are open during every logging operation.
 
-9. **Unit Testing**:
+9. **Unit Testing**: [TODO]
    - **Issue**: There is no sign of unit tests for the sensor modules or the `Logger` class.
    - **Suggestion**: Add unit tests to ensure that the various sensor modules behave as expected. This could include testing the sensor alert thresholds, random value generation, and logger output. Consider using a testing framework like Google Test for C++.
 
-10. **Loop Termination in `main()`**:
+10. **Loop Termination in `main()`**: [DONE]
     - **Issue**: The main loop in the `main()` function runs indefinitely (`while(true)`), which might be impractical for testing or use cases where the loop needs to be stopped.
     - **Suggestion**: Add a condition or mechanism to terminate the loop, such as a maximum iteration count or an external interrupt.
 
@@ -84,7 +84,7 @@
 
 ### Additional Suggestions
 
-- **Use of Polymorphism**:
+- **Use of Polymorphism**: [DONE]
    - The system could be improved by introducing polymorphism to handle different sensor types. Currently, each sensor class is treated individually. Introducing a common interface or virtual functions for sensor behaviors like `printValue()` or `setRandomValue()` could simplify management.
 
 - **Configuration File**:
