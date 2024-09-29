@@ -60,18 +60,24 @@ void Logger::closeAll(){
 }
 
 Logger::Logger(): level(debug_4){
-    clean("all");
-    std::cout << "all cleaned.\n";
-    closeAll();
-    std::cout << "all closed.\n";
+    clean("all"); std::cout << "all cleaned.\n";
+    closeAll();   std::cout << "all closed.\n";
 
     alertsFile.open("logs/alerts.txt", std::ios::app);
+    if(!alertsFile.is_open())
+        std::cerr << "Failed to open the alerts file" << std::endl;
+
     analysisFile.open("logs/analysis.txt", std::ios::app);
+    if(!analysisFile.is_open())
+        std::cerr << "Failed to open the analysis File" << std::endl;
+
     infoFile.open("logs/info.txt", std::ios::app);
+    if(!infoFile.is_open())
+        std::cerr << "Failed to open the info File" << std::endl;
+
     debugFile.open("logs/debug.txt", std::ios::app);
-
-    // std::cout << "all opened.\n";
-
+    if(!debugFile.is_open())
+        std::cerr << "Failed to open the debug File" << std::endl;
 }
 
 void Logger::setLogLevel(logLevel l){
@@ -79,39 +85,23 @@ void Logger::setLogLevel(logLevel l){
 }
 
 void Logger::alert(std::string message, float num){
-    if(level < alerts_1) return;
-    
-    if(!alertsFile.is_open())
-        std::cerr << "Failed to open the alerts file" << std::endl;
-
-    alertsFile << time_ms() << "\t[ALERT]:\t" << message << num << std::endl;
+    if(level >= alerts_1)
+        alertsFile << time_ms() << "\t[ALERT]:\t" << message << num << std::endl;
 }
 
 void Logger::analysis(std::string message, float num){
-    if(level < analysis_2) return;
-
-    if(!analysisFile.is_open())
-        std::cerr << "Failed to open the analysis File" << std::endl;
-
-    analysisFile << time_ms() << "\t[ANALYSIS]:\t" << message << num << std::endl;
+    if(level >= analysis_2)
+        analysisFile << time_ms() << "\t[ANALYSIS]:\t" << message << num << std::endl;
 }
 
 void Logger::info(std::string message, float num){
-    if(level < info_3) return;
-    
-      if(!infoFile.is_open())
-        std::cerr << "Failed to open the info File" << std::endl;
-
-    infoFile << time_ms() << "\t[INFO]:\t" << message << num << std::endl;
+    if(level >= info_3)
+        infoFile << time_ms() << "\t[INFO]:\t" << message << num << std::endl;
 }
 
 void Logger::debug(std::string message, float num){
-    if(level < debug_4) return;
-
-       if(!debugFile.is_open())
-        std::cerr << "Failed to open the debug File" << std::endl;
-
-    debugFile << time_ms() << "\t[DEBUG]:\t" << message << num << std::endl;
+    if(level >= debug_4)
+        debugFile << time_ms() << "\t[DEBUG]:\t" << message << num << std::endl;
 }
 
 

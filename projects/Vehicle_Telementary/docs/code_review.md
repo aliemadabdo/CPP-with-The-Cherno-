@@ -25,19 +25,19 @@
 
 #### **Areas for Improvement**:
 
-1. **Thread Safety**:
+1. **Thread Safety**: [POSTPONDED]
    - **Issue**: The project seems to assume a single-threaded environment. However, if the system is to be extended to a multi-threaded application (e.g., concurrent sensor readings), the lack of synchronization mechanisms could lead to race conditions, especially in logging and sensor updates.
    - **Suggestion**: Introduce locks (e.g., `std::mutex`) around shared resources like the `Logger` and sensor values to make the system thread-safe.
 
-2. **Destructor Management**:
+2. **Destructor Management**: [FIXED]
    - **Issue**: In the `Logger` class and sensor classes, destructors are not always explicitly defined. While the compiler-generated destructors work, it's a good practice to provide destructors, especially if new members like dynamically allocated resources are introduced in the future.
    - **Suggestion**: Add custom destructors where needed, particularly in classes that manage resources (e.g., file I/O in `Logger`). Ensure that all files are properly closed in the `Logger` destructor.
 
-3. **Error Handling**:
+3. **Error Handling**: [TODO]
    - **Issue**: Error handling is minimal. For instance, the logger only prints an error message to `stderr` if a file fails to open, but it doesn't stop or recover from that error.
    - **Suggestion**: Implement more robust error handling. For instance, the `Logger` class could attempt to re-open the file or raise an exception if critical files fail to open.
 
-4. **Unnecessary Destructor Call in `main()`**:
+4. **Unnecessary Destructor Call in `main()`**: [FIXED]
    - **Issue**: The `Logger` destructor is explicitly called in the `main()` function (`Logger::getInstance()->~Logger();`). This is unnecessary since destructors are automatically called when the program exits.
    - **Suggestion**: Remove the explicit call to the destructor. Let the object handle its own destruction.
 
@@ -46,11 +46,11 @@
    // Logger::getInstance()->~Logger();
    ```
 
-5. **Magic Numbers and Hardcoding**:
+5. **Magic Numbers and Hardcoding**: [FIXED]
    - **Issue**: The code contains hardcoded values (magic numbers), such as the speed range in the `SpeedSensor` and radar distance ranges.
    - **Suggestion**: Replace hardcoded values with named constants or configurable parameters. This would allow the system to be more adaptable to different car models or environments.
 
-6. **Comment Quality and Documentation**:
+6. **Comment Quality and Documentation**: 
    - **Issue**: Some comments could be clearer, and some parts of the code lack explanations. For example, comments like `// as the drived class constructs the base class` are confusing and have typos.
    - **Suggestion**: Improve the comments and overall documentation. Make sure that comments clearly describe the purpose of functions, classes, and tricky logic. This will help in maintaining and scaling the project.
 
@@ -58,11 +58,11 @@
    // The derived class constructor initializes the base class with sensor thresholds.
    ```
 
-7. **Performance Considerations**:
+7. **Performance Considerations**: [ALREADY MANAGED]
    - **Issue**: The current implementation logs every single operation, including sensor value generation, which can result in I/O bottlenecks.
    - **Suggestion**: If performance is a concern, consider optimizing the logging system by batching log writes or providing an option to disable logging in production environments.
 
-8. **Redundant Logger Instance Checks**:
+8. **Redundant Logger Instance Checks**: [FIXED]
    - **Issue**: Every time a log message is written, the code checks if the respective log file is open. This can be inefficient and redundant if the files are opened once during initialization and closed upon destruction.
    - **Suggestion**: Ensure that files are opened during initialization and close them only at the end. There’s no need to check if the files are open during every logging operation.
 
